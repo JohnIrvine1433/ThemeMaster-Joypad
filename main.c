@@ -116,6 +116,151 @@ void initkeycodes() {
   r2_key = libevdev_event_code_from_name(event_type, "BTN_TL2");
 }
 
+void handle_event_rg552(int type, int code, int value) {
+  if (type == 1) {
+		if (code == back_key && value == 1) {
+			quit = 0;
+
+			emit(EV_KEY, back, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == back_key && value == 0) {
+			emit(EV_KEY, back, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == back_key && value == 2) {
+			quit = 1;
+		}
+
+		if (code == start_key && value == 1) {
+			if (quit == 1) {
+				system(quit_command);
+				exit(0);
+			}
+
+			emit(EV_KEY, start, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == start_key && value == 0) {
+			emit(EV_KEY, start, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == a_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, a, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == a_key && value == 0) {
+			emit(EV_KEY, a, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == b_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, b, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == b_key && value == 0) {
+			emit(EV_KEY, b, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == x_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, x, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == x_key && value == 0) {
+			emit(EV_KEY, x, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == y_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, y, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == y_key && value == 0) {
+			emit(EV_KEY, y, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == l1_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, l1, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == l1_key && value == 0) {
+			emit(EV_KEY, l1, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == l2_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, l2, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == l2_key && value == 0) {
+			emit(EV_KEY, l2, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == r1_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, r1, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == r1_key && value == 0) {
+			emit(EV_KEY, r1, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == r2_key && (value == 1 || value == 2)) {
+			emit(EV_KEY, r2, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == r2_key && value == 0) {
+			emit(EV_KEY, r2, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+	}
+
+	// d-pad
+	if (type == 3) {
+		if (code == up_key && value == -1) {
+			emit(EV_KEY, up, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == up_key && value == 0) {
+			emit(EV_KEY, up, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == down_key && value == 1) {
+			emit(EV_KEY, down, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+
+		}
+		else if (code == down_key && value == 0) {
+			emit(EV_KEY, down, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == left_key && value == -1) {
+			emit(EV_KEY, left, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == left_key && value == 0) {
+			emit(EV_KEY, left, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+
+		if (code == right_key && value == 1) {
+			emit(EV_KEY, right, 1);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+		else if (code == right_key && value == 0) {
+			emit(EV_KEY, right, 0);
+			emit(EV_SYN, SYN_REPORT, 0);
+		}
+	}
+}
+
+
 void handle_event_anbernic(int type, int code, int value) {
   if (type == 1) {
 		if (code == back_key && value == 1) {
@@ -405,12 +550,12 @@ int main(int argc, char* argv[]) {
   char inputstr[100];
 
 	// command line arguments
-  // first argument to be script name in order to manage forced exit
-  // second argument to be the name of gamepad
-  // argv[0] = controls
-  // argv[1] = ThemeMaster
-  // argv[2] = oga, ogs, anbernic
-  // argc must be 3
+	// first argument to be script name in order to manage forced exit
+	// second argument to be the name of gamepad
+	// argv[0] = controls
+	// argv[1] = ThemeMaster
+	// argv[2] = oga, ogs, anbernic
+	// argc must be 3
 	if (argc == 3) {
     strcpy(quit_command, "pgrep -f ");
     strcat(quit_command, argv[1]);
@@ -433,6 +578,23 @@ int main(int argc, char* argv[]) {
       r1_key = 309;
       r2_key = 315;
       strcpy(inputstr, "/dev/input/by-path/platform-ff300000.usb-usb-0:1.2:1.0-event-joystick");
+    }
+	else if (strcmp(argv[2], "rg552") == 0) {
+      back_key = 314;
+      start_key = 315;
+      a_key = 305;
+      b_key = 304;
+      x_key = 307;
+      y_key = 308;
+      up_key = 544;
+      down_key = 545;
+      left_key = 546;
+      right_key = 547;
+      l1_key = 310;
+      l2_key = 312; 
+      r1_key = 311;
+      r2_key = 313;
+      strcpy(inputstr, "/dev/input/by-path/platform-singleadc-joypad-event-joystick");
     }
 	else if (strcmp(argv[2], "oga") == 0) {
       back_key = 704;
@@ -532,13 +694,16 @@ int main(int argc, char* argv[]) {
 		rc_joypad = libevdev_next_event(dev_joypad, LIBEVDEV_READ_FLAG_NORMAL, &ev_joypad);
 
 		if (rc_joypad == LIBEVDEV_READ_STATUS_SUCCESS) {
-      if (strcmp(argv[2], "anbernic") == 0) {
+			if (strcmp(argv[2], "anbernic") == 0) {
         handle_event_anbernic(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
-      else {
-        handle_event_ogx(ev_joypad.type, ev_joypad.code, ev_joypad.value);
-      }
-		}
+	  	else if (strcmp(argv[2], "rg552") == 0) {
+				handle_event_rg552(ev_joypad.type, ev_joypad.code, ev_joypad.value);
+	  	}
+    else {
+      handle_event_ogx(ev_joypad.type, ev_joypad.code, ev_joypad.value);
+    }
+	}
 
 		usleep(100);
 	} while (rc_joypad == LIBEVDEV_READ_STATUS_SYNC || rc_joypad == LIBEVDEV_READ_STATUS_SUCCESS || rc_joypad == -EAGAIN);
