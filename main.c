@@ -90,9 +90,9 @@ short up = KEY_UP;
 short down = KEY_DOWN;
 short left = KEY_LEFT;
 short right = KEY_RIGHT;
-short l1 = KEY_SPACE;
+short l1 = KEY_PAGEUP;
 short l2 = KEY_SPACE;
-short r1 = KEY_ENTER;
+short r1 = KEY_PAGEDOWN;
 short r2 = KEY_ENTER;
 
 int quit = 0;

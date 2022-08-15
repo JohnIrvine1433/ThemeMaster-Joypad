@@ -1,4 +1,4 @@
-CC = gcc
+CC ?= gcc
 CCFLAGS = -W -Wall -std=c11
 
 BINARY = tm-joypad
