@@ -535,6 +535,23 @@ int main(int argc, char* argv[]) {
       r2_key = 313;
       strcpy(inputstr, "/dev/input/by-path/platform-gameforce-gamepad-event-joystick");
     }
+    else if (strcmp(argv[2], "x55") == 0) {
+      back_key = 704;
+      start_key = 709;
+      a_key = 304;
+      b_key = 305;
+      x_key = 307;
+      y_key = 308;
+      up_key = 544;
+      down_key = 545;
+      left_key = 546;
+      right_key = 547;
+      l1_key = 310;
+      l2_key = 312;
+      r1_key = 311;
+      r2_key = 313;
+      strcpy(inputstr, "/dev/input/by-path/platform-zed_joystick-event-joystick");
+    }
     else {
       printf("Error lauching, unrecognised parameters\n");
   		exit(0);
@@ -586,7 +603,7 @@ int main(int argc, char* argv[]) {
         handle_event_anbernic(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
       else {
-        // argv[2] = "rg552", "oga", "ogs", "chi"
+        // argv[2] = "rg552", "oga", "ogs", "chi", "x55"
         handle_event_ogx(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
 		}
