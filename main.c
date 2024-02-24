@@ -279,8 +279,8 @@ void handle_event_anbernic(int type, int code, int value) {
   }
 }
 
-//handle event for oga, ogs, ogu, rk2020, rg552 and chi devices
-void handle_event_ogx(int type, int code, int value) {
+//default handle event
+void handle_event_all(int type, int code, int value) {
   if (type == 1) {
 		if (code == back_key && value == 1) {
 			quit = 0;
@@ -431,7 +431,7 @@ int main(int argc, char* argv[]) {
   // second argument to be the name of gamepad
   // argv[0] = controls
   // argv[1] = ThemeMaster
-  // argv[2] = (oga, ogs, ogu, anbernic, chi, rg552)
+  // argv[2] = (oga, ogs, ogu, anbernic, chi, rg552, xu10)
   // argv[3] = debug (optional)
 
   // first 2 arguments required
@@ -569,6 +569,23 @@ int main(int argc, char* argv[]) {
       r2_key = 313;
       strcpy(inputstr, "/dev/input/by-path/platform-zed_joystick-event-joystick");
     }
+    else if (strcmp(argv[2], "xu10") == 0) {
+      back_key = 314;
+      start_key = 315;
+      a_key = 305;
+      b_key = 304;
+      x_key = 307;
+      y_key = 308;
+      up_key = 544;
+      down_key = 545;
+      left_key = 546;
+      right_key = 547;
+      l1_key = 310;
+      l2_key = 312;
+      r1_key = 311;
+      r2_key = 313;
+      strcpy(inputstr, "/dev/input/by-path/platform-xu10-joypad-event-joystick");
+    }
     else {
       printf("Error lauching, unrecognised parameters\n");
   		exit(0);
@@ -620,8 +637,8 @@ int main(int argc, char* argv[]) {
         handle_event_anbernic(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
       else {
-        // argv[2] = "rg552", "oga", "ogs", "ogu" "chi", "x55"
-        handle_event_ogx(ev_joypad.type, ev_joypad.code, ev_joypad.value);
+        // argv[2] = "rg552", "oga", "ogs", "ogu" "chi", "x55", "xu10"
+        handle_event_all(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
 		}
 
