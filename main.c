@@ -593,46 +593,46 @@ int main(int argc, char* argv[]) {
       if ((co = read_config_file("paramcontrols.txt")) != NULL) {
         while(1) {
           if (strcmp(co->key, "back_key") == 0) {
-            back_key = co->value;
+            back_key = atoi(co->value);
           }
           else if (strcmp(co->key, "start_key") == 0) {
-            start_key = co->value;
+            start_key = atoi(co->value);
           }
           else if (strcmp(co->key, "a_key") == 0) {
-            a_key = co->value;
+            a_key = atoi(co->value);
           }
           else if (strcmp(co->key, "b_key") == 0) {
-            b_key = co->value;
+            b_key = atoi(co->value);
           }
           else if (strcmp(co->key, "x_key") == 0) {
-            x_key = co->value;
+            x_key = atoi(co->value);
           }
           else if (strcmp(co->key, "y_key") == 0) {
-            y_key = co->value;
+            y_key = atoi(co->value);
           }
           else if (strcmp(co->key, "l1_key") == 0) {
-            l1_key = co->value;
+            l1_key = atoi(co->value);
           }
           else if (strcmp(co->key, "l2_key") == 0) {
-            l2_key = co->value;
+            l2_key = atoi(co->value);
           }
           else if (strcmp(co->key, "r1_key") == 0) {
-            r1_key = co->value;
+            r1_key = atoi(co->value);
           }
           else if (strcmp(co->key, "r2_key") == 0) {
-            r2_key = co->value;
+            r2_key = atoi(co->value);
           }
           else if (strcmp(co->key, "up_key") == 0) {
-            up_key = co->value;
+            up_key = atoi(co->value);
           }
           else if (strcmp(co->key, "down_key") == 0) {
-            down_key = co->value;
+            down_key = atoi(co->value);
           }
           else if (strcmp(co->key, "left_key") == 0) {
-            left_key = co->value;
+            left_key = atoi(co->value);
           }
           else if (strcmp(co->key, "right_key") == 0) {
-            right_key = co->value;
+            right_key = atoi(co->value);
           }
           else if (strcmp(co->key, "inputstr") == 0) {
             strcpy(inputstr, co->value);
