@@ -1,0 +1,15 @@
+back_key = 314;
+start_key = 315;
+a_key = 305;
+b_key = 304;
+x_key = 307;
+y_key = 308;
+up_key = 544;
+down_key = 545;
+left_key = 546;
+right_key = 547;
+l1_key = 310;
+l2_key = 312;
+r1_key = 311;
+r2_key = 313;
+inputstr = /dev/input/by-path/platform-xu10-joypad-event-joystick;
