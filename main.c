@@ -649,6 +649,24 @@ int main(int argc, char* argv[]) {
       printf("Error lauching, unrecognised parameters\n");
   		exit(0);
 		}
+    if (debug) {
+      printf("Controls key values\n");
+      printf("back_key: %d\n", back_key);
+      printf("start_key: %d\n", start_key);
+      printf("a_key: %d\n", a_key);
+      printf("b_key: %d\n", b_key);
+      printf("x_key: %d\n", x_key);
+      printf("y_key: %d\n", y_key);
+      printf("up_key: %d\n", up_key);
+      printf("down_key: %d\n", down_key);
+      printf("left_key: %d\n", left_key);
+      printf("right_key: %d\n", right_key);
+      printf("l1_key: %d\n", l1_key);
+      printf("l2_key: %d\n", l2_key);
+      printf("r1_key: %d\n", r1_key);
+      printf("r2_key: %d\n", r2_key);
+      fflush(stdout);
+    }
   }
   else {
     printf("Error lauching, missing required parameters\n");
