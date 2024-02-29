@@ -676,7 +676,7 @@ int main(int argc, char* argv[]) {
 	uinp_fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
 	if (uinp_fd < 0) {
 		printf("Unable to open /dev/uinput\n");
-		return -1;
+		exit(1);
 	}
 
 	// Intialize the uInput device to NULL
