@@ -587,6 +587,23 @@ int main(int argc, char* argv[]) {
       r2_key = 313;
       strcpy(inputstr, "/dev/input/by-path/platform-xu10-joypad-event-joystick");
     }
+    else if (strcmp(argv[2], "rgarc") == 0) {
+      back_key = 314;
+      start_key = 315;
+      a_key = 305;
+      b_key = 304;
+      x_key = 307;
+      y_key = 308;
+      up_key = 544;
+      down_key = 545;
+      left_key = 546;
+      right_key = 547;
+      l1_key = 310;
+      l2_key = 312;
+      r1_key = 311;
+      r2_key = 313;
+      strcpy(inputstr, "/dev/input/by-path/platform-rg_arc_joypad-event-joystick");
+    }
     else if (strcmp(argv[2], "paramcontrols") == 0) {
       // parse paramcontrols.txt
       config_option_t co;
@@ -714,7 +731,7 @@ int main(int argc, char* argv[]) {
         handle_event_anbernic(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
       else {
-        // argv[2] = "rg552", "oga", "ogs", "ogu" "chi", "x55", "xu10"
+        // argv[2] = "rg552", "oga", "ogs", "ogu" "chi", "x55", "xu10", "rgarc"
         handle_event_all(ev_joypad.type, ev_joypad.code, ev_joypad.value);
       }
 		}
