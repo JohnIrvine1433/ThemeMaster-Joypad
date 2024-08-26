@@ -27,7 +27,7 @@ config_option_t read_config_file(char* path) {
         memset(co, 0, sizeof(config_option));
         co->prev = last_co_addr;
         
-        if (fscanf(fp, "%s = %s", &co->key[0], &co->value[0]) != 2) {
+        if (fscanf(fp, "%127s = %127s", &co->key[0], &co->value[0]) != 2) {
             if (feof(fp)) {
                 break;
             }
